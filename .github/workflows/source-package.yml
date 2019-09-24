@@ -13,7 +13,7 @@ jobs:
       - name: Build a .tar.gz source package
         run: |
           export REF=$(echo ${GITHUB_REF} | tr / -)
-          git archive --format=tar.gz -o yubioath-desktop-$GITHUB_REF.tar.gz --prefix yubioath-desktop/ $GITHUB_REF
+          git archive --format=tar.gz -o yubioath-desktop-$REF.tar.gz --prefix yubioath-desktop/ $REF
 
       - name: Push artifact to s3
         env:
@@ -21,4 +21,4 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           export REF=$(echo ${GITHUB_REF} | tr / -)
-          aws s3 mv yubioath-desktop-$GITHUB_REF.tar.gz s3://yubico-builds/yubioath-desktop/yubioath-desktop-${REF}.AppImage --acl public-read
+          aws s3 mv yubioath-desktop-$REF.tar.gz s3://yubico-builds/yubioath-desktop/yubioath-desktop-${REF}.tar-gz --acl public-read
