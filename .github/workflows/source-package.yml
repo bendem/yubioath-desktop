@@ -27,4 +27,4 @@ jobs:
         run: |
           export REF=$(echo ${GITHUB_REF} | cut -d '/' -f 3)
           cd yubioath-desktop
-          aws s3 mv yubioath-desktop-$REF.tar.gz s3://yubico-builds/yubioath-desktop/yubioath-desktop-${REF}.tar-gz --acl public-read
+          aws s3 mv yubioath-desktop-$REF.tar.gz s3://yubico-builds/yubioath-desktop/yubioath-desktop-${REF}.tar.gz --acl public-read
