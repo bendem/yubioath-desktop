@@ -12,11 +12,11 @@ jobs:
       - name: Clone repository
         run: |
           git clone https://github.com/yubico/yubioath-desktop
-          cd yubioath-desktop
 
       - name: Build a .tar.gz source package
         run: |
           export REF=$(echo ${GITHUB_REF} | cut -d '/' -f 3)
+          cd yubioath-desktop
           git archive --format=tar.gz -o yubioath-desktop-$REF.tar.gz --prefix yubioath-desktop/ master
 
       - name: Push artifact to s3
